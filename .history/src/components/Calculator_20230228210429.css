@@ -1,0 +1,25 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calculator-display {
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.calculator-row {
+  display: flex;
+  height: 40px;
+}
+
+.calculator-button {
+  flex: 1;
+  border-radius: 40px;
+}
+
+.calculator-button-zero {
+  flex: 2
+}

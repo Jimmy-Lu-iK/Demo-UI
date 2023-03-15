@@ -1,0 +1,7 @@
+{
+  "todolist": [
+    { "id": 1, "title": "read books", "isComplete": false },
+    { "id": 2, "title": "eat lunch", "isComplete": true },
+    { "id": 3, "title": "sleep", "isComplete": false }
+  ]
+}

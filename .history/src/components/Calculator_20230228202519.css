@@ -1,0 +1,12 @@
+.calculator {
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator-display {
+  
+}
+
+.calculator-row {
+  display: flex;
+}
