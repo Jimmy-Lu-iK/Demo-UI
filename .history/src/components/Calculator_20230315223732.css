@@ -1,7 +1,7 @@
 .calculator {
   width: 500px;
   padding-bottom: 50px;
-  margin-left: 30%;
+  margin-left: 35%;
   background-color: black;
   display: flex;
   flex-direction: column;

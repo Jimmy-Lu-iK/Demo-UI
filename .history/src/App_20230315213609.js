@@ -18,11 +18,29 @@ import UrlDeal from './Js/UrlDeal';
 import Word from './Js/Word';
 
 const App = () => {
-  return (
-    <div className='app'>
-      <Calculator />
-    </div>
-  )
+  return <div className='app'>
+    {/* <ReactClock />
+    <UrlDeal url='www.apple.com?a=1&b=2&c=3' /> */}
+    <Calculator />
+    {/* <FlattenObject />
+    <PromisePractice />
+    <Closual />
+    <Inputs />
+    <TodoList />
+    <FormValidation /> */}
+    {/* <TodoList />
+    <TodoListRedux />
+    <FlattenObject />
+    <Form />
+    <Flexbox />
+    <FormValidation /> */}
+    {/* <Carousel />
+    <Dropdown />
+    <AutoComplete />
+    <Form /> */}
+    {/* <ArrayBuiltIn /> */}
+    {/* <Word sentence="hello my name hello is Jinming I want to make friend with you let us to be good friends forever"/> */}
+  </div>
 };
 
 

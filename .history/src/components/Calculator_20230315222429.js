@@ -13,20 +13,26 @@ export default function Calculator() {
 
   const handleSelectItem = (value) => {
     if(shouldSetItem1) {
+      console.log('selectItem1')
       if(item1ShouldUpdate) {
+        console.log('item1ShouldUpdate')
         setSelectItem1(value)
         setComputedValue(value)
         setItem1ShouldUpdate(false)
       } else {
+        console.log('item1 else')
         setSelectItem1(selectItem1 + '' + value)
         setComputedValue(selectItem1 + '' + value)
       }
     } else {
+      console.log('selectItem2')
       if(item2ShouldUpdate) {
+        console.log('item2ShouldUpdate')
         setSelectItem2(value)
         setComputedValue(value)
         setItem2ShouldUpdate(false)
       } else {
+        console.log('item2 else')
         setSelectItem2(selectItem2+'' +value)
         setComputedValue(selectItem2+'' +value)
       }
@@ -72,24 +78,32 @@ export default function Calculator() {
     setShouldSetItem1(false)
 
     if(selectItem1) {
+      console.log('selectItem1')
+
       if(selectFunction && !item2ShouldUpdate) {
+        console.log('handleFunction, selectFunction')
         setSelectFunction(value)
         handleComputed()
         setItem1ShouldUpdate(false)
         setShouldSetItem1(false)
       } else {
+        console.log('handleFunction, not selectFunction')
         setSelectFunction(value)
       }
     }
   }
 
-  const handleAddDot = () => {   
+  const handleAddDot = () => {
+    console.log('handleAddDot')
+    
     if(shouldSetItem1) {
+      console.log('item1')
       if(!(selectItem1+'').includes('.')) {
         setSelectItem1(selectItem1+'.')
         setComputedValue(selectItem1+'.')
       }
     } else {
+      console.log('item2')
       if(!(selectItem2+'').includes('.')) {
         setSelectItem2(selectItem2+'.')
         setComputedValue(selectItem2+'.')
@@ -122,38 +136,40 @@ export default function Calculator() {
   }
 
   return (
-    <div className="calculator">
-      <div className="calculator-display-border">
-        <div className="calculator-display">{computedValue}</div>
-      </div>
-      <div className="calculator-row">
-        <button className="calculator-button gray-button" onClick={handleReset}>AC</button>
-        <button className="calculator-button gray-button" onClick={handleMinus}>+/-</button>
-        <button className="calculator-button gray-button" onClick={() => handleFunction('%')}>%</button>
-        <button className="calculator-button yellow-button" onClick={() => handleFunction('/')}>/</button>
-      </div>
-      <div className="calculator-row">
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(7)}>7</button>
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(8)}>8</button>
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(9)}>9</button>
-        <button className="calculator-button yellow-button" onClick={() => handleFunction('x')}>x</button>
-      </div>
-      <div className="calculator-row">
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(4)}>4</button>
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(5)}>5</button>
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(6)}>6</button>
-        <button className="calculator-button yellow-button" onClick={() => handleFunction('-')}>-</button>
-      </div>
-      <div className="calculator-row">
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(1)}>1</button>
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(2)}>2</button>
-        <button className="calculator-button black-button" onClick={() => handleSelectItem(3)}>3</button>
-        <button className="calculator-button yellow-button" onClick={() => handleFunction('+')}>+</button>
-      </div>
-      <div className="calculator-row">
-        <button className="calculator-button-zero black-button" onClick={() => handleSelectItem(0)}>0</button>
-        <button className="calculator-button black-button" onClick={handleAddDot}>.</button>
-        <button className="calculator-button yellow-button" onClick={handleComputed}>=</button>
+    <div className='app'>
+      <div className="calculator">
+        <div className="calculator-display-border">
+          <div className="calculator-display">{computedValue}</div>
+        </div>
+        <div className="calculator-row">
+          <button className="calculator-button gray-button" onClick={handleReset}>AC</button>
+          <button className="calculator-button gray-button" onClick={handleMinus}>+/-</button>
+          <button className="calculator-button gray-button" onClick={() => handleFunction('%')}>%</button>
+          <button className="calculator-button yellow-button" onClick={() => handleFunction('/')}>/</button>
+        </div>
+        <div className="calculator-row">
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(7)}>7</button>
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(8)}>8</button>
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(9)}>9</button>
+          <button className="calculator-button yellow-button" onClick={() => handleFunction('x')}>x</button>
+        </div>
+        <div className="calculator-row">
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(4)}>4</button>
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(5)}>5</button>
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(6)}>6</button>
+          <button className="calculator-button yellow-button" onClick={() => handleFunction('-')}>-</button>
+        </div>
+        <div className="calculator-row">
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(1)}>1</button>
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(2)}>2</button>
+          <button className="calculator-button black-button" onClick={() => handleSelectItem(3)}>3</button>
+          <button className="calculator-button yellow-button" onClick={() => handleFunction('+')}>+</button>
+        </div>
+        <div className="calculator-row">
+          <button className="calculator-button-zero black-button" onClick={() => handleSelectItem(0)}>0</button>
+          <button className="calculator-button black-button" onClick={handleAddDot}>.</button>
+          <button className="calculator-button yellow-button" onClick={handleComputed}>=</button>
+        </div>
       </div>
     </div>
   )
