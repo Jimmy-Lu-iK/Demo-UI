@@ -1,0 +1,30 @@
+<!-- Dropdown-MDX-Documentation.mdx -->
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import dedent from 'ts-dedent';
+
+## Dropdown
+
+Iphone's style of a Dropdown.
+
+- [Javascript](#Javascript)
+- [CSS](#CSS)
+
+### Javascript
+<SyntaxHighlighter language="jsx" style={okaidia}>
+  {`
+    import React from 'react';
+    
+    function MyComponent(props) {
+      return (
+        <div>
+          <h1>{props.title}</h1>
+          <p>{props.description}</p>
+        </div>
+      );
+    }
+    
+    export default MyComponent;
+  `}
+</SyntaxHighlighter>
