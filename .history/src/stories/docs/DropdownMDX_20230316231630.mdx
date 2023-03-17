@@ -1,0 +1,147 @@
+<!-- Calculator-MDX-Documentation.mdx -->
+
+## Dropdown
+
+Iphone's style of a Dropdown.
+
+- [Javascript](#Javascript)
+- [CSS](#CSS)
+
+### Javascript
+```javascript
+import { useEffect, useState, useRef } from 'react'
+import { GoChevronDown } from 'react-icons/go'
+import './Dropdown.css'
+
+export default function Dropdown({ options }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [selected, setSelected] = useState(null)
+  const divElement = useRef()
+  const optionsPanelRef = useRef()
+
+  useEffect(() => {
+    const handler = (event) => {
+      if(divElement.current && !divElement.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    };
+    
+    document.addEventListener('click', handler, true)
+
+    return () => {
+        document.removeEventListener('click', handler)
+    };
+  }, [])
+
+  useEffect(() => {
+    if(optionsPanelRef.current) {
+      if (isOpen) {
+        optionsPanelRef.current.style.display = 'block';
+        optionsPanelRef.current.style.maxHeight = `${optionsPanelRef.current.scrollHeight}px`;
+      } else {
+        optionsPanelRef.current.style.maxHeight = '0';
+        setTimeout(() => {
+          optionsPanelRef.current.style.display = 'none';
+        },400)
+      }
+    }
+  }, [isOpen]);
+
+  const handleClick = () => {
+    setIsOpen((currentIsOpen) => !currentIsOpen);
+  }
+
+  const handleOptionClick = (option) => {
+    setSelected(option)
+    setIsOpen(false);
+  }
+
+  const renderedOptions = options
+    .filter((option) => option !== selected)
+    .map((option) => (
+      <div className="option" key={option} onClick={() => handleOptionClick(option)}>
+        {option}
+      </div>
+    ));
+
+  return (
+    <div ref={divElement} className="dropdown">
+        <div
+            className="select-panel panel" 
+            onClick={handleClick}
+        >
+            {selected || 'Select...'}
+            <GoChevronDown className="chevron-down-icon"/>
+        </div>
+        <div ref={optionsPanelRef} className={`options-panel panel${isOpen ? ' show' : ' hidden'}`} >
+          {renderedOptions}
+        </div>
+    </div>
+  )
+}
+```
+
+### CSS
+
+```css
+.calculator {
+  width: 500px;
+  padding-bottom: 50px;
+  margin-left: 30%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.calculator-display-border {
+  width: 400px;
+  height: 200px;
+  border: 1px solid black;
+  text-align:right;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.calculator-display {
+  font-size: 5rem;
+  width: 400px;
+  overflow: auto;
+  color: white;
+}
+
+.calculator-row {
+  display: flex;
+  height: 100px;
+  gap: 10px;
+}
+
+.calculator-button {
+  width: 100px;
+  border-radius: 50px;
+  font-size: 30px;
+}
+
+.calculator-button-zero {
+  width: 220px;
+  padding-right: 100px;
+  border-radius: 50px;
+  font-size: 30px;
+}
+
+.yellow-button {
+  background-color: rgb(162, 162, 16);
+  color: white;
+}
+
+.gray-button {
+  background-color: rgb(231, 240, 240);
+  color: black;
+}
+
+.black-button {
+  background-color: gray;
+  color: white;
+}
+```

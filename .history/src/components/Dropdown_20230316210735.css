@@ -1,0 +1,9 @@
+.dropdown {
+  position: relative;
+  width: 48px;
+}
+
+.select-panel {
+  display: flex;
+  
+}

@@ -1,0 +1,39 @@
+.dropdown {
+  position: relative;
+  width: 12rem;
+}
+
+.panel {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  width: 100%;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.select-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.options-panel {
+  position: absolute;
+  top: 100%;
+}
+
+.chevron-down-icon {
+  font-size: large;
+}
+
+.option {
+  border-radius: 0.25rem;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.option:hover {
+  background-color: #cce2ff;
+}

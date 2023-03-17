@@ -1,0 +1,11 @@
+.dropdown {
+  position: relative;
+  width: 12rem;
+}
+
+.select-panel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: white;
+}
