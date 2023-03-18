@@ -1,0 +1,41 @@
+#search-input {
+  width: 12rem;;
+}
+
+.suggestion-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 1;
+  width: 12rem;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* 当用户将鼠标悬停在菜单项上时 */
+.suggestion-item:hover {
+  background-color: #f2f2f2;
+}
+
+/* 当用户选择一个菜单项时 */
+.suggestion-item.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* 搜索框的样式 */
+input[type="search"] {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
