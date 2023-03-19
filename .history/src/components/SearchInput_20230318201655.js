@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import faker from 'faker';
 import './SearchInput.css';
 
 function useDebounce(fn, delay) {
@@ -22,7 +23,6 @@ function SearchInput() {
   const [autocompleteText, setAutocompleteText] = useState('');
 
   const inputRef = useRef(null);
-  const optionsRef = useRef([]);
 
   const filterSuggestions = async (inputValue) => {
     if (inputValue) {
@@ -31,7 +31,6 @@ function SearchInput() {
       const filteredSuggestions = suggestionsData
         .map((suggestion) => suggestion.package.name)
         .slice(0, 10);
-
       setSuggestions(filteredSuggestions);
       if (filteredSuggestions.length > 0) {
         setAutocompleteText(filteredSuggestions[0].substr(inputValue.length));
@@ -64,23 +63,6 @@ function SearchInput() {
     if (event.key === 'ArrowRight' && autocompleteText) {
       setQuery((query) => query + autocompleteText);
       setAutocompleteText('');
-      setIsOpen(false)
-    }
-  }
-
-  function handleLastOptionTab(event) {
-    if (event.keyCode === 9 ) { // Tab key pressed
-      const lastOptionIndex = optionsRef.current.length - 1;
-      if (event.target === optionsRef.current[lastOptionIndex]) {
-        event.preventDefault();
-        optionsRef.current[0].focus();
-      }
-    }
-
-    if(event.key === "Enter") {
-      console.log('event', event)
-      setQuery(event.target.innerText)
-      setIsOpen(false);
     }
   }
 
@@ -104,18 +86,7 @@ function SearchInput() {
         <ul className="suggestion-list">
           {suggestions.map((suggestion, index) => {
             return (
-              <li 
-                key={index} 
-                tabIndex="0" 
-                className="suggestion-item" 
-                onClick={handleOptionSelect}
-                ref={(node) => {
-                  if (node) {
-                    optionsRef.current[index] = node;
-                  }
-                }}
-                onKeyDown={handleLastOptionTab} 
-              >
+              <li key={index} tabIndex="0" className="suggestion-item" onClick={handleOptionSelect}>
                 <b>{suggestion.slice(0, query.length)}</b>
                 {suggestion.slice(query.length)}
               </li>

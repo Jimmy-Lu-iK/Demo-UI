@@ -1,0 +1,89 @@
+<!-- Calculator-MDX-Documentation.mdx -->
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import VirtualList from '../../components/VirtualList'
+
+## VirtualList
+
+A virtual list using react-window and faker data.
+
+### Instance
+<VirtualList itemSize={100} />
+
+### JSX
+<SyntaxHighlighter language="jsx" style={okaidia}>
+  {`
+import React from 'react';
+import { FixedSizeList } from 'react-window';
+import { faker } from '@faker-js/faker';
+import './VirtualList.css'; // 引入CSS样式文件
+ 
+function VirtualList({ itemSize }) {
+  const items = React.useMemo(() => {
+    // 生成itemSize个随机数据
+    return Array.from({ length: itemSize }, () => ({
+      name: faker.name.fullName(),
+      email: faker.internet.email(),
+      image: faker.image.avatar(),
+    }));
+  }, []);
+ 
+  const Row = ({ index, style }) => {
+    const { name, email, image } = items[index];
+ 
+    return (
+      <div className="row" style={style}>
+        <img src={image} alt={name} />
+        <div>
+          <div>id: {index}</div>
+          <div>{name}</div>
+          <div>{email}</div>
+        </div>
+      </div>
+    );
+  };
+ 
+  return (
+    <div className="VirtualList">
+      <FixedSizeList
+        height={700}
+        itemCount={items.length}
+        itemSize={itemSize}
+        width={500}
+      >
+        {Row}
+      </FixedSizeList>
+    </div>
+  );
+}
+ 
+export default VirtualList;
+  `}
+</SyntaxHighlighter>
+
+### CSS
+<SyntaxHighlighter language="css" style={okaidia}>
+  {`
+.VirtualList {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: auto;
+}
+
+.VirtualList .row {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.VirtualList .row img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+  `}
+</SyntaxHighlighter>

@@ -12,6 +12,7 @@
     "react-icons": "^4.8.0",
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
+    "react-window": "^1.8.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -52,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@storybook/addon-a11y": "^6.5.16",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",

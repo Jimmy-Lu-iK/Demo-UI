@@ -1,11 +1,13 @@
-import { useEffect, useState, useRef } from 'react'
+// import { useEffect, useState, useRef } from 'react'
+import React from 'react'
 import { GoChevronDown } from 'react-icons/go'
 import './Dropdown.css'
+
+
 
 export default function Dropdown({ options }) {
   const [isOpen, setIsOpen] = useState(false)
   const [selected, setSelected] = useState(null)
-  
   const divElement = useRef()
   const optionsPanelRef = useRef()
 

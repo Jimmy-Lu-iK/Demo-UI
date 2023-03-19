@@ -1,20 +1,20 @@
 import React from 'react';
 
-import SearchInput from '../components/SearchInput'
-import SearchInputMDX from './docs/SearchInputMDX.mdx'
+import VirtualList from '../components/VirtualList'
+import CalculatorMDX from './docs/CalculatorMDX.mdx'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/SearchInput',
-  component: SearchInput,
+  title: 'Components/VirtualList',
+  component: VirtualList,
   parameters: {
     docs: {
-      page: SearchInputMDX,
+      page: VirtualListMDX,
     },
   },
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 
-export const Instance = () => <SearchInput />
+export const Instance = () => <VirtualList itemSize={100} />
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

@@ -1,7 +1,6 @@
 #search-input {
   width: 12rem;
   position: relative;
-  padding: 10px 5px;
   z-index: 2;
   background-color: transparent;
 }
@@ -37,13 +36,29 @@
   cursor: pointer;
 }
 
+/* 当用户将鼠标悬停在菜单项上时 */
 .suggestion-item:hover {
   background-color: #f2f2f2;
 }
 
+/* 当用户选择一个菜单项时 */
+.suggestion-item.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* 搜索框的样式 */
+input[type='search'] {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .autocomplete-text {
   position: absolute;
-  top: 6px;
+  top: 0;
   z-index: 1;
   padding: 1px 0;
   color: #999;

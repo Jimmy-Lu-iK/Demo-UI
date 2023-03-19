@@ -1,20 +1,20 @@
 import React from 'react';
 
-import SearchInput from '../components/SearchInput'
-import SearchInputMDX from './docs/SearchInputMDX.mdx'
+import Calculator from '../components/Calculator'
+import CalculatorMDX from './docs/CalculatorMDX.mdx'
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Components/SearchInput',
-  component: SearchInput,
+  title: 'Components/Calculator',
+  component: Calculator,
   parameters: {
     docs: {
-      page: SearchInputMDX,
+      page: CalculatorMDX,
     },
   },
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 
-export const Instance = () => <SearchInput />
+export const Instance = () => <Calculator />
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

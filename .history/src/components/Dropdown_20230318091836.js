@@ -5,7 +5,6 @@ import './Dropdown.css'
 export default function Dropdown({ options }) {
   const [isOpen, setIsOpen] = useState(false)
   const [selected, setSelected] = useState(null)
-  
   const divElement = useRef()
   const optionsPanelRef = useRef()
 

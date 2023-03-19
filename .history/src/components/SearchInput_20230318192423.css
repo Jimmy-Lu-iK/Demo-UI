@@ -1,7 +1,6 @@
 #search-input {
   width: 12rem;
   position: relative;
-  padding: 10px 5px;
   z-index: 2;
   background-color: transparent;
 }
@@ -14,8 +13,6 @@
 
 .input-wrapper {
   position: relative;
-  display: inline-block;
-  background-color: #fff;
 }
 
 .suggestion-list {
@@ -41,11 +38,27 @@
   background-color: #f2f2f2;
 }
 
+.suggestion-item.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+input[type="search"] {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 .autocomplete-text {
   position: absolute;
-  top: 6px;
+  left: 0;
+  top: 0;
   z-index: 1;
   padding: 1px 0;
+  padding-left: 6px;
+  margin-left: 1px;
   color: #999;
   pointer-events: none;
 }

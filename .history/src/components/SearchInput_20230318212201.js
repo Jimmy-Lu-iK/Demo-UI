@@ -68,22 +68,6 @@ function SearchInput() {
     }
   }
 
-  function handleLastOptionTab(event) {
-    if (event.keyCode === 9 ) { // Tab key pressed
-      const lastOptionIndex = optionsRef.current.length - 1;
-      if (event.target === optionsRef.current[lastOptionIndex]) {
-        event.preventDefault();
-        optionsRef.current[0].focus();
-      }
-    }
-
-    if(event.key === "Enter") {
-      console.log('event', event)
-      setQuery(event.target.innerText)
-      setIsOpen(false);
-    }
-  }
-
   return (
     <div className="search-input">
       <label htmlFor="search-input">Search Input: </label>

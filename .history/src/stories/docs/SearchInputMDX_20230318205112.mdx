@@ -1,3 +1,20 @@
+<!-- Calculator-MDX-Documentation.mdx -->
+
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import SearchInput from '../../components/SearchInput'
+
+## SearchInput
+
+A search input with suggestion list and autocomplete.
+
+### Instance
+<SearchInput />
+
+### JSX
+<SyntaxHighlighter language="jsx" style={okaidia}>
+  {`
 import React, { useState, useRef, useEffect } from 'react';
 import './SearchInput.css';
 
@@ -22,7 +39,6 @@ function SearchInput() {
   const [autocompleteText, setAutocompleteText] = useState('');
 
   const inputRef = useRef(null);
-  const optionsRef = useRef([]);
 
   const filterSuggestions = async (inputValue) => {
     if (inputValue) {
@@ -31,7 +47,7 @@ function SearchInput() {
       const filteredSuggestions = suggestionsData
         .map((suggestion) => suggestion.package.name)
         .slice(0, 10);
-
+        
       setSuggestions(filteredSuggestions);
       if (filteredSuggestions.length > 0) {
         setAutocompleteText(filteredSuggestions[0].substr(inputValue.length));
@@ -68,22 +84,6 @@ function SearchInput() {
     }
   }
 
-  function handleLastOptionTab(event) {
-    if (event.keyCode === 9 ) { // Tab key pressed
-      const lastOptionIndex = optionsRef.current.length - 1;
-      if (event.target === optionsRef.current[lastOptionIndex]) {
-        event.preventDefault();
-        optionsRef.current[0].focus();
-      }
-    }
-
-    if(event.key === "Enter") {
-      console.log('event', event)
-      setQuery(event.target.innerText)
-      setIsOpen(false);
-    }
-  }
-
   return (
     <div className="search-input">
       <label htmlFor="search-input">Search Input: </label>
@@ -104,18 +104,7 @@ function SearchInput() {
         <ul className="suggestion-list">
           {suggestions.map((suggestion, index) => {
             return (
-              <li 
-                key={index} 
-                tabIndex="0" 
-                className="suggestion-item" 
-                onClick={handleOptionSelect}
-                ref={(node) => {
-                  if (node) {
-                    optionsRef.current[index] = node;
-                  }
-                }}
-                onKeyDown={handleLastOptionTab} 
-              >
+              <li key={index} tabIndex="0" className="suggestion-item" onClick={handleOptionSelect}>
                 <b>{suggestion.slice(0, query.length)}</b>
                 {suggestion.slice(query.length)}
               </li>
@@ -128,3 +117,72 @@ function SearchInput() {
 }
 
 export default SearchInput;
+
+  `}
+</SyntaxHighlighter>
+
+### CSS
+<SyntaxHighlighter language="css" style={okaidia}>
+  {`
+.calculator {
+  width: 500px;
+  padding-bottom: 50px;
+  margin-left: 30%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.calculator-display-border {
+  width: 400px;
+  height: 200px;
+  border: 1px solid black;
+  text-align:right;
+  display: flex;
+  flex-direction: column-reverse;
+}
+ 
+.calculator-display {
+  font-size: 5rem;
+  width: 400px;
+  overflow: auto;
+  color: white;
+}
+ 
+.calculator-row {
+  display: flex;
+  height: 100px;
+  gap: 10px;
+}
+ 
+.calculator-button {
+  width: 100px;
+  border-radius: 50px;
+  font-size: 30px;
+}
+ 
+.calculator-button-zero {
+  width: 220px;
+  padding-right: 100px;
+  border-radius: 50px;
+  font-size: 30px;
+}
+ 
+.yellow-button {
+  background-color: rgb(162, 162, 16);
+  color: white;
+}
+ 
+.gray-button {
+  background-color: rgb(231, 240, 240);
+  color: black;
+}
+ 
+.black-button {
+  background-color: gray;
+  color: white;
+}
+  `}
+</SyntaxHighlighter>
