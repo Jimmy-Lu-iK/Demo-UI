@@ -1,2 +1,0 @@
-
-const todoListReducer = createReducer()

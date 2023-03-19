@@ -1,3 +1,0 @@
-const todoListReducer = (state=[], action) = {
-  
-}
