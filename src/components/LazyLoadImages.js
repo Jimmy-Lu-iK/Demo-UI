@@ -1,6 +1,7 @@
-import React from 'react';
 import { faker } from '@faker-js/faker';
-import LazyLoad from 'react-lazyload';
+import React, { Suspense } from 'react';
+
+const LazyImage = React.lazy(() => import('./LazyImage'));
 
 function LazyLoadImages() {
   const [items, setItems] = React.useState([]);
@@ -26,9 +27,9 @@ function LazyLoadImages() {
           {items.map((item, index) => (
             <div className="product" key={index}>
               <h2>{item.name}</h2>
-              <LazyLoad>
-                <img alt={item.name} src={item.image} />
-              </LazyLoad>
+              <Suspense fallback={<img alt={item.name} src={item.image} />}>
+                <LazyImage alt={item.name} src={item.image} />
+              </Suspense>
               <div className="id">id: {index}</div>
               <div className="price">${item.price}</div>
             </div>

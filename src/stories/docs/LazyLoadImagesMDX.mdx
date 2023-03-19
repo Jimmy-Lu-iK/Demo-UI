@@ -5,13 +5,77 @@ import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import LazyLoadImages from '../../components/LazyLoadImages'
 
-## LazyLoadImages
+# LazyLoadImages
 
 Lazy load images like a shoping site
 
-### JSX
+## JSX
+
+### LazyImage
 <SyntaxHighlighter language="jsx" style={okaidia}>
   {`
+import React, { useState, useEffect } from 'react';
+ 
+const LazyImage = ({ alt, src }) => {
+  const [imageSrc, setImageSrc] = useState(null);
+  const [imageRef, setImageRef] = useState(null);
+ 
+  useEffect(() => {
+    let observer;
+    let didCancel = false;
+ 
+    if (imageRef && imageSrc === null) {
+      if (IntersectionObserver) {
+        observer = new IntersectionObserver(
+          entries => {
+            entries.forEach(entry => {
+              if (
+                !didCancel &&
+                (entry.intersectionRatio > 0 || entry.isIntersecting)
+              ) {
+                setImageSrc(src);
+                observer.unobserve(imageRef);
+              }
+            });
+          },
+          {
+            threshold: 0.01,
+            rootMargin: '75%',
+          }
+        );
+        observer.observe(imageRef);
+      } else {
+        // Old browsers fallback
+        setImageSrc(src);
+      }
+    }
+    return () => {
+      didCancel = true;
+      if (observer && observer.unobserve) {
+        observer.unobserve(imageRef);
+      }
+    };
+  }, [src, imageSrc, imageRef]);
+ 
+  return (
+    <img
+      ref={setImageRef}
+      alt={alt}
+      src={imageSrc}
+    />
+  );
+};
+  `}
+</SyntaxHighlighter>
+
+### LazyLoadImages
+<SyntaxHighlighter language="jsx" style={okaidia}>
+  {`
+import { faker } from '@faker-js/faker';
+import React, { Suspense } from 'react';
+ 
+const LazyImage = React.lazy(() => import('./LazyImage'));
+ 
 function LazyLoadImages() {
   const [items, setItems] = React.useState([]);
  
@@ -36,11 +100,11 @@ function LazyLoadImages() {
           {items.map((item, index) => (
             <div className="product" key={index}>
               <h2>{item.name}</h2>
-              <LazyLoad>
-                <img alt={item.name} src={item.image} />
-              </LazyLoad>
+              <Suspense fallback={<img alt={item.name} src={item.image} />}>
+                <LazyImage alt={item.name} src={item.image} />
+              </Suspense>
               <div className="id">id: {index}</div>
-              <div className="price">\${item.price}</div>
+              <div className="price">$\{item.price}</div>
             </div>
           ))}
         </div>
@@ -51,5 +115,5 @@ function LazyLoadImages() {
   `}
 </SyntaxHighlighter>
 
-### Instance
+## Instance
 <LazyLoadImages />
