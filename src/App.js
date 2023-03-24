@@ -4,6 +4,7 @@ import Dropdown from './components/Dropdown';
 import SearchInput from './components/SearchInput'
 import VirtualList from './components/VirtualList';
 import LazyLoadImages from './components/LazyLoadImages';
+import BarChartWithResize from './components/BarChartWithResize';
 
 const options = ['Apple', 'Banana', 'Peach', 'Kiwi', 'Orange']
 
@@ -14,7 +15,8 @@ const App = () => {
       {/* <Dropdown options={options} /> */}
       {/* <SearchInput /> */}
       {/* <VirtualList itemSize={100} /> */}
-      <LazyLoadImages />
+      {/* <LazyLoadImages /> */}
+      <BarChartWithResize />
     </div>
   )
 };
