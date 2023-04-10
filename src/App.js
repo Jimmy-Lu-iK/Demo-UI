@@ -5,6 +5,9 @@ import SearchInput from './components/SearchInput'
 import VirtualList from './components/VirtualList';
 import LazyLoadImages from './components/LazyLoadImages';
 import BarChartWithResize from './components/BarChartWithResize';
+import Toast from './components/Toast';
+import { useState } from 'react';
+import ToastExamples from './components/ToastExamples';
 
 const options = ['Apple', 'Banana', 'Peach', 'Kiwi', 'Orange']
 
@@ -16,7 +19,8 @@ const App = () => {
       {/* <SearchInput /> */}
       {/* <VirtualList itemSize={100} /> */}
       {/* <LazyLoadImages /> */}
-      <BarChartWithResize />
+      {/* <BarChartWithResize /> */}
+      <ToastExamples />
     </div>
   )
 };

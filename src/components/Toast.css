@@ -1,0 +1,49 @@
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+ 
+.toast-close {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px;
+  margin: 0;
+}
+ 
+.toast-close:hover {
+  color: #f00;
+}
+ 
+.toast:not(.toast-visible) {
+  opacity: 0;
+}
+ 
+.toast:not(.toast-visible) .toast-content {
+  display: none;
+}
+ 
+.toast-progress {
+  /* 使用绝对定位将进度条置于 Toast 文本上方 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background-color: #007bff;
+}
