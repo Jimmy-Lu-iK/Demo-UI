@@ -8,6 +8,7 @@ import BarChartWithResize from './components/BarChartWithResize';
 import Toast from './components/Toast';
 import { useState } from 'react';
 import ToastExamples from './components/ToastExamples';
+import FormValidate from './components/FormValidate';
 
 const options = ['Apple', 'Banana', 'Peach', 'Kiwi', 'Orange']
 
@@ -20,7 +21,8 @@ const App = () => {
       {/* <VirtualList itemSize={100} /> */}
       {/* <LazyLoadImages /> */}
       {/* <BarChartWithResize /> */}
-      <ToastExamples />
+      {/* <ToastExamples /> */}
+      <FormValidate />
     </div>
   )
 };
