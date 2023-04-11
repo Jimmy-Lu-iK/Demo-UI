@@ -16,12 +16,12 @@ const App = () => {
   return (
     <div className='app'>
       {/* <Calculator /> */}
-      {/* <Dropdown options={options} /> */}
-      {/* <SearchInput /> */}
+      <Dropdown options={options} />
+      <SearchInput />
       {/* <VirtualList itemSize={100} /> */}
       {/* <LazyLoadImages /> */}
       {/* <BarChartWithResize /> */}
-      {/* <ToastExamples /> */}
+      <ToastExamples />
       <FormValidate />
     </div>
   )

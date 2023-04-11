@@ -93,7 +93,7 @@ function BarChart({data}) {
 
   return (
     <div className="bar-chart" ref={wrapperRef}>
-      <svg ref={svgRef} width='600' height='400'>
+      <svg ref={svgRef} width='600' height='400' className='svg-file'>
         <g className='x-axis' />
         <g className='y-axis' />
       </svg>
@@ -110,9 +110,9 @@ export default function BarChartWithResize() {
       <BarChart data={data}/>
       <br/>
       <br/>
-      <button onClick={() => setData(data.map(d => d + 5))}>Update data</button>
-      <button onClick={() => setData(data.filter(d => d<35))}>Filter data</button>
-      <button onClick={() => setData([...data, Math.round(Math.random()*100)])}>Add data</button>
+      <button onClick={() => setData(data.map(d => d + 5))} className='svg-button' >Update data</button>
+      <button onClick={() => setData(data.filter(d => d<35))} className='svg-button' >Filter data</button>
+      <button onClick={() => setData([...data, Math.round(Math.random()*100)])} className='svg-button'>Add data</button>
       <br />
     </div>
   )

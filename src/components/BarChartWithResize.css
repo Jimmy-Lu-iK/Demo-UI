@@ -1,4 +1,4 @@
-svg {
+.svg-file {
   background-color: #eee;
   overflow: visible;
   display: block;
@@ -14,7 +14,7 @@ svg {
   padding: 0 50px;
 }
 
-button {
+.svg-button {
   width: 100px;
   border: 1px solid black;
   margin: 0 auto 5px;

@@ -44,7 +44,8 @@
   display: none;
   position: absolute;
   top: 100%;
-  overflow: hidden
+  overflow: hidden;
+  z-index:3;
 }
 
 .chevron-down-icon {
