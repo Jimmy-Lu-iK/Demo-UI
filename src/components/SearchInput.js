@@ -101,7 +101,7 @@ function SearchInput() {
         </span>
       </div>
       {isOpen && (
-        <ul className="suggestion-list">
+        <ul className={`suggestion-list ${isOpen ? ' show' : ' hidden'}`}>
           {suggestions.map((suggestion, index) => {
             return (
               <li 
